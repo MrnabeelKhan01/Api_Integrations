@@ -1,5 +1,5 @@
 import 'package:api_integrat/infrastruture/models/user.dart';
-import 'package:api_integrat/infrastruture/services/user.dart';
+import 'package:api_integrat/infrastruture/services/get.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

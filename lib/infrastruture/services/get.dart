@@ -1,4 +1,5 @@
 import 'package:api_integrat/helper/api_helper.dart';
+import 'package:api_integrat/infrastruture/models/map.dart';
 import 'package:api_integrat/infrastruture/models/photos.dart';
 import 'package:api_integrat/infrastruture/models/user.dart';
 import 'package:flutter/cupertino.dart';
@@ -20,5 +21,13 @@ class  GetServices{
       _photosData.add(PhotosModel.fromJson(i));
     }
     return _photosData;
+  }
+  Future<List<MapModel>>getMapData(BuildContext context)async{
+    final response= await _apiHelper.get(context, endPoint:"/users");
+    List<MapModel> _mapData=[];
+    for(var i in response){
+      _mapData.add(MapModel.fromJson(i));
+    }
+    return _mapData;
   }
 }
