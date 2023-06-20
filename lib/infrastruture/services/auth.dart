@@ -1,23 +1,34 @@
 import 'dart:convert';
-import 'dart:io';
 
-import 'package:api_integrat/infrastruture/exceptions.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:http/http.dart';
+
+import '../exceptions.dart';
 import 'package:http/http.dart' as http;
+class AuthServices{
 
-class BaseApiHelper {
-  Future<dynamic> get(BuildContext context, {required String endPoint}) async {
-    var responseJson;
-    try {
-      final response = await http
-          .get(Uri.parse("https://jsonplaceholder.typicode.com$endPoint"));
-      responseJson = _returnResponse(response);
-    } on SocketException catch (e) {
-      throw FetchDataException("No internet connection");
+  Future<void> login({required String email, required String password})async{
+    try{
+      Response response = await post(
+          Uri.parse('https://reqres.in/api/login'),
+          body: {
+            'email' : email,
+            'password' : password
+          }
+      );
+      if(response.statusCode == 200){
+
+        var data = jsonDecode(response.body.toString());
+        print(data['token']);
+        print('Login successfully');
+
+      }else {
+        print('failed');
+      }
     }
-    return responseJson;
+    catch(e){
+      e.toString();
+    }
   }
-
   dynamic _returnResponse(http.Response response) {
     switch (response.statusCode) {
       case 200:

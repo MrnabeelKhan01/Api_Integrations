@@ -5,7 +5,6 @@ import 'package:api_integrat/infrastruture/models/user.dart';
 import 'package:flutter/cupertino.dart';
 final  BaseApiHelper _apiHelper=BaseApiHelper();
 class  GetServices{
-
   Future<List<UserModel>>getUserData(BuildContext context)async{
     final response= await _apiHelper.get(context, endPoint:"/posts");
     List<UserModel> _userData=[];

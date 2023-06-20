@@ -1,3 +1,4 @@
+import 'package:api_integrat/presentation/auth/login/login_view.dart';
 import 'package:flutter/material.dart';
 
 import 'presentation/geo_locations/geo_location_view.dart';
@@ -15,6 +16,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo', theme: ThemeData(), home: GeoView());
+        title: 'Flutter Demo', theme: ThemeData(), home: const LogInView());
   }
 }
